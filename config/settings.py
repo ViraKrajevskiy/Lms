@@ -18,7 +18,7 @@ SECRET_KEY = 'django-insecure-hks#ljnbbcf9=&7ni(aq&(q4jod4t*1f%qs1d551=4nuw-9jxt
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*','161.35.30.48']
 
 #dsfferwf
 
@@ -78,10 +78,10 @@ SIMPLE_JWT = {
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "user_auth/static"),  # Убедись, что эта директория существует
+    os.path.join(BASE_DIR, 'user_auth/static/'),  # Убедись, что эта директория существует
 ]
 
 
