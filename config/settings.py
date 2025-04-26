@@ -81,7 +81,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'user_auth/static/'),  # Убедись, что эта директория существует
+    os.path.join(BASE_DIR, 'config/static/'),  # Убедись, что эта директория существует
 ]
 
 
