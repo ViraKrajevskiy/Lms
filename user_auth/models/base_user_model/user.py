@@ -20,7 +20,6 @@ class CustomUserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-
     def create_student(self, phone_number, email=None, password=None, **extra_fields):
         extra_fields.setdefault('role', 'student')
         return self.create_user(phone_number, email, password, **extra_fields)
@@ -45,6 +44,7 @@ class CustomUserManager(BaseUserManager):
             raise ValueError('Superuser must have is_staff=True.')
 
         return self.create_user(phone_number, email, password, **extra_fields)
+
 
 
 class User(AbstractBaseUser, PermissionsMixin, BaseModel):

@@ -12,6 +12,7 @@ class Attendance(models.Model):
 
     def save(self, *args, **kwargs):
         # Переопределяем save, чтобы автоматически добавить статус 'A' для студентов,
+
         # которые не были отмечены в AttendanceRecord
         super().save(*args, **kwargs)
 
