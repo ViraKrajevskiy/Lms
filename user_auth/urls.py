@@ -13,6 +13,8 @@ from user_auth.views_sets.views_workers.stafff import *
 from user_auth.views_sets.views_sets_pay.for_worker import *
 from user_auth.views_sets.views_sets_pay.for_student import *
 from user_auth.views_sets.views_workers.workers import *
+from user_auth.views_sets.viewset_attendance.attendance import *
+
 
 router = DefaultRouter()
 router.register(r'users', UserViewSet)
@@ -34,6 +36,7 @@ router.register(r'worker_salary_payed', PayForWorkerViewSet)
 router.register(r'worker_salary_waited_pay', WorkerSalaryWaitedPayViewSet)
 router.register(r'staff', StaffViewsSet)
 router.register(r'pay_for_student', PayStudentViewsSet)
+router.register(r'attendances', AttendanceRecordViewSet)
 
 
 

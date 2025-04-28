@@ -10,6 +10,23 @@ class Attendance(models.Model):
     group = models.ForeignKey('Group', on_delete=models.CASCADE, related_name='attendances')
     students = models.ManyToManyField('Student', through='AttendanceRecord', related_name='attendances')
 
+    def save(self, *args, **kwargs):
+        # Переопределяем save, чтобы автоматически добавить статус 'A' для студентов,
+        # которые не были отмечены в AttendanceRecord
+        super().save(*args, **kwargs)
+
+        all_students = self.group.students.all()  # Получаем всех студентов группы
+        existing_students = self.students.all()  # Получаем студентов, которые уже отмечены в AttendanceRecord
+
+        # Студенты, которые не были отмечены, автоматически становятся "Отсутствуют"
+        for student in all_students:
+            if student not in existing_students:
+                AttendanceRecord.objects.update_or_create(
+                    attendance=self,
+                    student=student,
+                    defaults={'status': 'A'}  # Статус "Отсутствует"
+                )
+
     def __str__(self):
         return f"Посещаемость {self.date} ({self.group})"
 

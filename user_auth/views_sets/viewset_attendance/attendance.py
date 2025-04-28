@@ -1,14 +1,8 @@
 from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
-from rest_framework import serializers
-from user_auth.models.student_package.model_attandace import *
-
-class AttendanceRecordSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = AttendanceRecord
-        fields = ['attendance', 'student', 'status']
-
+from user_auth.models.student_package.model_attandace import Attendance, AttendanceRecord
+from user_auth.serializers.attendance_serializer.attendance_serializer import AttendanceRecordSerializer
 
 class AttendanceRecordViewSet(viewsets.ModelViewSet):
     queryset = AttendanceRecord.objects.all()
@@ -16,6 +10,7 @@ class AttendanceRecordViewSet(viewsets.ModelViewSet):
 
     @action(detail=True, methods=['post'])
     def update_status(self, request, pk=None):
+
         try:
             attendance = Attendance.objects.get(id=pk)
         except Attendance.DoesNotExist:
