@@ -2,10 +2,9 @@ from django.core.validators import RegexValidator
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, PermissionsMixin
 
-
 class BaseModel(models.Model):
-    created_ed = models.DateField(auto_now_add=True)
-    updated_ed = models.DateField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         abstract = True

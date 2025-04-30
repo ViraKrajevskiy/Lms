@@ -25,8 +25,6 @@ class Student(BaseModel):
     def __str__(self):
         return f"{self.surname}, {self.firstname}, {self.lastname}"
 
-
-
 class Parents(models.Model):
     student = models.OneToOneField(Student, on_delete=models.CASCADE)
     full_name = models.CharField(max_length=50, null=True, blank=True)

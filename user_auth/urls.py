@@ -2,7 +2,6 @@ from django.urls import path
 from rest_framework.routers import DefaultRouter
 
 from user_auth.serializers.login_and_registration_serializer.logins_serializer import *
-from user_auth.view.login_registration.registration import *
 
 from user_auth.views_sets.view_sets_user.user_views_set import *
 from user_auth.views_sets.views_group.group import *
@@ -17,6 +16,7 @@ from user_auth.views_sets.viewset_attendance.attendance import *
 
 
 router = DefaultRouter()
+router.register(r'attendance' ,AttendanceViewSet)
 router.register(r'users', UserViewSet)
 router.register(r'group_homework', GroupHomeWorkViewsSet)
 router.register(r'student_homework', StudentHomeworkViewSet)
@@ -36,8 +36,6 @@ router.register(r'worker_salary_payed', PayForWorkerViewSet)
 router.register(r'worker_salary_waited_pay', WorkerSalaryWaitedPayViewSet)
 router.register(r'staff', StaffViewsSet)
 router.register(r'pay_for_student', PayStudentViewsSet)
-router.register(r'attendances', AttendanceRecordViewSet)
-
 
 
 

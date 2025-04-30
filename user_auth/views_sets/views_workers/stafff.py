@@ -6,15 +6,24 @@ from user_auth.pagination import StandardResultsSetPagination
 from user_auth.serializers.stafff_serializer.staff import StaffSerializer, TeacherSerializer, MentorSerializer
 
 
+
+
+
 class StaffViewsSet(viewsets.ModelViewSet):
     queryset = Staff.objects.all()
     serializer_class = StaffSerializer
+
+
 
 
 class TeacherViewSet(viewsets.ModelViewSet):
     queryset = Teacher.objects.all()
     serializer_class = TeacherSerializer
     pagination_class = StandardResultsSetPagination
+
+
+
+
 
 class MentorViewSet(viewsets.ModelViewSet):
     queryset = Mentor.objects.all()

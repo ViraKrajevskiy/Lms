@@ -46,6 +46,7 @@ MIDDLEWARE = [
     'django_otp.middleware.OTPMiddleware',
 ]
 
+
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.SessionAuthentication',
