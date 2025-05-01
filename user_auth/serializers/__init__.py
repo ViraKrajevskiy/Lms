@@ -1,4 +1,5 @@
 from user_auth.serializers.things_for_workers_serializer.teacher_serializer import *
+from user_auth.serializers.things_for_workers_serializer.WorkerAttandanceSerializer import *
 from user_auth.serializers.course_serializer.course_and_other import *
 from user_auth.serializers.stafff_serializer.staff import *
 from user_auth.serializers.student_serializer.student_serializer import *
@@ -8,3 +9,6 @@ from user_auth.serializers.user_serializer.user_serializer import *
 from user_auth.serializers.pay_serializer.pay_student_serializer import *
 from user_auth.serializers.pay_serializer.pay_staff_model import *
 from user_auth.serializers.login_and_registration_serializer.token_serializer import *
+from user_auth.serializers.attendance_serializer.attendance_serializer import *
+from user_auth.serializers.login_and_registration_serializer.logins_serializer import *
+from user_auth.serializers.login_and_registration_serializer.registration_serializer import *

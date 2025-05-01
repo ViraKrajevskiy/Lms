@@ -7,3 +7,4 @@ from user_auth.views_sets.views_lesson.lesson import *
 from user_auth.views_sets.views_workers.stafff import *
 from user_auth.views_sets.views_sets_pay.for_worker import *
 from user_auth.views_sets.views_sets_pay.for_student import *
+from user_auth.views_sets.viewset_attendance.attendance import *

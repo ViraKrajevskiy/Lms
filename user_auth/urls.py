@@ -38,7 +38,7 @@ router.register(r'worker_salary_payed', PayForWorkerViewSet)
 router.register(r'worker_salary_waited_pay', WorkerSalaryWaitedPayViewSet)
 router.register(r'staff', StaffViewsSet)
 router.register(r'pay_for_student', PayStudentViewsSet)
-
+# router.register(r'')
 
 
 
