@@ -14,39 +14,45 @@
 
 6. Купить домен.
 
+                            supervisor - может все обсалютно и крады и делит апдеййт и пут патч все могут
+                            admin - не может удалять но может добавить рабочих проверять их смотреть и студентов тоже могут менять их данные
+                            student - не может удалять может некоторые модели менять и тп все
+                            teacher - учитель может видеть  только свои группы не может удалять может менять домашние задания группы и видеть свои группы и студенты и также добавлять дз для группы и для студента должен автомтом добавляться дз
+                            staff - может смотреть свою зарплату и рооль ментор может те же действия которые были у учителя , обычным рабочим и тичеер входит , Рабочие могут просматривать обеих 3 но не моогут смотреть на других рабочих к примеру  вот учителей ментора и устенда могут видеть но не других рабочих могут проверять все данные и смотреть их также вносить изменния могут.
 
-1 BaseModel           - -
-2 CustomUserManager   - -
+1 BaseModel           - -  supervisor
+2 CustomUserManager   - -  supervisor
 
-3 User                UserSerializer                         UserViewSet
-4 GroupHomework       GroupHomeworkSerializer                GroupHomeWorkViewsSet
-5 StudentHomework     StudentHomeworkSerializer              StudentHomeworkViewSet
-6 Room                RoomSerializer                         RoomViewSet
-7 Lesson              LessonSerializer                       LessonViewsSet
-8 StudentPay          PayStudentSerializer                   PayStudentViewsSet
-9 PyedForWorker       PayForWorkerSerializer                 PayForWorkerViewSet
-10 Attendance         AttendanceSerializer                   AttendanceViewSet
-11 StudyDay           StudyDaySerializer                     StudyDayViewSet
-12 CourseDuration     CourseDurationSerializer               CourseDurationViewSet
-13 CourseLevel        CourseLevelSerializer                  CourseLevelViewSet
-14 Course             CourseSerializer                       CourseViewSet
-15 Group              GroupSerializer                        GroupViewSet
-16 Student            StudentSerializer                      StudentViewSet
-17 Parents            ParentsSerializer                      ParentViewSet
-18 Teacher            TeacherSerializer                      TeacherViewSet
-19 Mentor             MentorSerializer                       MentorViewSet
-20 WorkDay            WorkDaySerializer                      WorkDayViewSet
-21 WorkerAttendance   WorkerAttendanceSerializer             WorkerAttendanceViewSet
-22 PositionLevel      PositionLevelSerializer                PositionLevelViewSet
-23 Department         DepartmentSerializer                   DepartmentViewSet
-24 WorkerSalaryPayed  WorkerSalaryPayedSerializer            WorkerSalaryPayedViewSet
-25 WorkerSalaryWaitedPay   WorkerSalaryWaitedPaySerializer   WorkerSalaryWaitedPayViewSet
-26 Staff             StaffSerializer                         StaffViewsSet
+3 User                UserSerializer                         UserViewSet                            supervisor          admin - может также просматривать и создавать обновлять смотреть,  удалять не может, всеми функциями просмотраа пользоваться , student - может посмотреть свое имя и номер телефона и может поменять свой пароль с помощью OTp видит ток свои данные и своих одногрупников в курсет и то их имена, teacher - может смотреть свои данные место локации номер и прочей но не может менять их кроме номера . staff - могут просмтривать свои данные и также место проживания менять.
+4 GroupHomework       GroupHomeworkSerializer                GroupHomeWorkViewsSet                  supervisor          admin - может также просматривать и создавать обновлять смотреть,  удалять не может, всеми функциями просмотраа пользоваться , student - видит дз которое дано для группы менять не может его ток смотрит. , teacher - Может создавать менять домашней задание но не удалять также он видит все его дз которые он задал , staff - может просматривать дз и менять может и создать,
+5 StudentHomework     StudentHomeworkSerializer              StudentHomeworkViewSet                 supervisor          admin - может также просматривать и создавать обновлять смотреть,  удалять не может, всеми функциями просмотраа пользоваться , student - может менять поля дз там валидатор есть уже если дз прошло дедлайн то не может он поместить свое дз а если время не прошло может оно уже реализовано и готово только осталось настроить пермишионны , staff - может просматривать дз и менять может и создать,
+6 Room                RoomSerializer                         RoomViewSet                            supervisor          admin - может также просматривать и создавать обновлять смотреть,  удалять не может, всеми функциями просмотраа пользоваться ,staff - может просматривать и менять может и создать,
+7 Lesson              LessonSerializer                       LessonViewsSet                         supervisor          admin - может также просматривать и создавать обновлять смотреть,  удалять не может, всеми функциями просмотраа пользоваться , student - может ток просматривать все уроки которые были у него но не менятть их ну и может один раз оценить после конца урока начиная от 1 до 5 балов.teacher - создает может все делать кроме удаления, staff - может просматривать и менять может и создать,
+8 StudentPay          PayStudentSerializer                   PayStudentViewsSet                     supervisor          admin - может также просматривать и создавать обновлять смотреть,  удалять не может, всеми функциями просмотраа пользоваться , student - создает студент и может посмотреть  когда оплачивал ток свои оплаты но не удалять их создать как бы оплатить не удалять и также может свои оплаты поискать когда платил фильтр одним словом, staff - может просматривать ,
+9 PyedForWorker       PayForWorkerSerializer                 PayForWorkerViewSet                    supervisor          admin - может также просматривать и создавать обновлять смотреть,  удалять не может, всеми функциями просмотраа пользоваться , staff - может просматривать ,
+10 Attendance         AttendanceSerializer                   AttendanceViewSet                      supervisor          admin - может также просматривать и создавать обновлять смотреть,  удалять не может, всеми функциями просмотраа пользоваться , Teacher - создаеться автоматически один после создания lesson и учитель проверяет отмечает кто есть после отметки те кто попоздал уже в другом типу будут опоздали а пришедшие будут пришедшими а не отмеченные автоматом не прищел учитель не может удалять ток менять , staff - может просматривать и менять может и создать,
+11 StudyDay           StudyDaySerializer                     StudyDayViewSet                        supervisor          admin - может также просматривать и создавать обновлять смотреть,  удалять не может, всеми функциями просмотраа пользоваться ,  staff - может просматривать и менять может и создать,
+12 CourseDuration     CourseDurationSerializer               CourseDurationViewSet                  supervisor          admin - может также просматривать и создавать обновлять смотреть,  удалять не может, всеми функциями просмотраа пользоваться ,staff - может просматривать и менять может и создать,
+13 CourseLevel        CourseLevelSerializer                  CourseLevelViewSet                     supervisor          admin - может также просматривать и создавать обновлять смотреть,  удалять не может, всеми функциями просмотраа пользоваться , staff - может просматривать и менять может и создать,
+14 Course             CourseSerializer                       CourseViewSet                            supervisor           admin - может также просматривать и создавать обновлять смотреть,  удалять не может, всеми функциями просмотраа пользоваться , staff - может просматривать и менять может и создать,
+15 Group              GroupSerializer                        GroupViewSet                            supervisor            admin - может также просматривать и создавать обновлять смотреть,  удалять не может, всеми функциями просмотраа пользоваться ,student - может посмотреть свою группу название и студентов в них своих сокурсников их имена не имеет права менять и  удалять, Teacher - учитель может видеть свою группу студентов и групппу и также смотреть курс и все остальное но уже это он менять не может, staff - может просматривать и менять может и создать,
+16 Student            StudentSerializer                      StudentViewSet                            supervisor          admin - может также просматривать и создавать обновлять смотреть,  удалять не может, всеми функциями просмотраа пользоваться , staff - может просматривать и менять может и создать,
+17 Parents            ParentsSerializer                      ParentViewSet                            supervisor           admin - может также просматривать и создавать обновлять смотреть,  удалять не может, всеми функциями просмотраа пользоваться ,  staff - может просматривать и менять может и создать,
+18 Teacher            TeacherSerializer                      TeacherViewSet                            supervisor          admin - может также просматривать и создавать обновлять смотреть,  удалять не может, всеми функциями просмотраа пользоваться , teacher - может входить логин в свой ну может менять ток свой место проживание и смотреть свои данные, staff - может просматривать ,
+19 Mentor             MentorSerializer                       MentorViewSet                            supervisor           admin - может также просматривать и создавать обновлять смотреть,  удалять не может, всеми функциями просмотраа пользоваться , staff - может просматривать ,
+20 WorkDay            WorkDaySerializer                      WorkDayViewSet                            supervisor          admin - может также просматривать и создавать обновлять смотреть,  удалять не может, всеми функциями просмотраа пользоваться ,staff - может просматривать ,
+21 WorkerAttendance   WorkerAttendanceSerializer             WorkerAttendanceViewSet                            supervisor        admin - может также просматривать и создавать обновлять смотреть  удалять не может, всеми функциями просмотраа пользоваться , teacher - может смотреть когда прищел но не менять, staff - может просматривать,
+22 PositionLevel      PositionLevelSerializer                PositionLevelViewSet                            supervisor     admin - может также просматривать и создавать обновлять смотреть,  удалять не может, всеми функциями просмотраа пользоваться , staff - может просматривать ,
+23 Department         DepartmentSerializer                   DepartmentViewSet                            supervisor          admin - может также просматривать и создавать обновлять смотреть,  удалять не может, всеми функциями просмотраа пользоваться , staff - могут просмтривать свои данные .
+24 WorkerSalaryPayed  WorkerSalaryPayedSerializer            WorkerSalaryPayedViewSet                            supervisor     admin - может также просматривать и создавать обновлять смотреть,  удалять не может, всеми функциями просмотраа пользоваться , teacher - может смотреть когда оплачено было и скоко но не менять и удалять, staff - могут просмтривать свои данные .
+25 WorkerSalaryWaitedPay   WorkerSalaryWaitedPaySerializer   WorkerSalaryWaitedPayViewSet                            supervisor  admin - может также просматривать и создавать обновлять смотреть,  удалять не может, всеми функциями просмотраа пользоваться ,
+26 Staff             StaffSerializer                         StaffViewsSet                            supervisor      admin - админ может ток создавать и обновлять и просматривать, но удалять работника не имеет, права и может посмотреть всех работников , teacher - может смотреть на каком он департаменте когда должен работать в какие дни и все свои дни когда был на работе он , staff - могут просмтривать свои данные .
+27 StudentAddHw       StudentAddHwSerializer                 StudentAddHwViewSet                      supervisor      admin - админ может ток создавать и обновлять и просматривать, но удалять работника не имеет, права и может посмотреть всех работников , student вот тут работает механика которую я говорил он может создавать свой дз точней будет создан уже сразу и ученик может менять только фиелды комента и загрузки файла потомучто он загружает свой дз, teacher - можетт оценивать как и ментор дз ученика но не менять его и удалять смотреть может загруженные файлы учеником не может он менять, staff - могут просмтривать данные и менять .
 
-27                   CustomTokenObtainPairSerializer
-28            LogoutView
-29            LoginView
-30                   LoginSerializer
+28            LogoutView                            supervisor
+29            LoginView                            supervisor
+30                   LoginSerializer                            supervisor
+31 CustomTokenObtainPairSerializer                            supervisor
 
 
 Модели и их названия:

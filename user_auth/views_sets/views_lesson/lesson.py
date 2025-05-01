@@ -1,6 +1,7 @@
 from user_auth.serializers.course_serializer.course_and_other import RoomSerializer
 from user_auth.serializers.special_lesson_serializer.lesson_serializer import LessonSerializer, GroupHomeworkSerializer, \
-    StudentHomeworkSerializer
+StudentHomeworkSerializer,StudentAddHwSerializer
+
 from user_auth.models.Hw_model.model_lesson import *
 from user_auth.models.Hw_model.model_home_work_lesson import *
 from user_auth.permissions.student_permissions.homework_permission import *
@@ -14,6 +15,9 @@ from rest_framework.permissions import IsAuthenticated
 from user_auth.permissions.student_permissions.homework_permission import *
 from user_auth.permissions.student_permissions.student_permissions import *
 
+class StudentAddHwViewSet(viewsets.ModelViewSet):
+    queryset = StudentAddHw.objects.all()
+    serializers_class = StudentAddHwSerializer
 
 class LessonViewsSet(viewsets.ModelViewSet):
     queryset = Lesson.objects.all()

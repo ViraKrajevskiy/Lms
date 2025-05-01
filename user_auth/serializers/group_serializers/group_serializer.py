@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from user_auth.models.Hw_model.model_home_work_lesson import *
+from user_auth.models.student_package.model_group import *
 
 class GroupSerializer(serializers.ModelSerializer):
     class Meta:

@@ -3,6 +3,7 @@ from rest_framework.routers import DefaultRouter
 
 from user_auth.serializers.login_and_registration_serializer.logins_serializer import *
 
+
 from user_auth.views_sets.view_sets_user.user_views_set import *
 from user_auth.views_sets.views_group.group import *
 from user_auth.views_sets.views_student.student import *
@@ -16,6 +17,7 @@ from user_auth.views_sets.viewset_attendance.attendance import *
 
 
 router = DefaultRouter()
+router.register(r'studentHwadd',StudentAddHwViewSet)
 router.register(r'attendance' ,AttendanceViewSet)
 router.register(r'users', UserViewSet)
 router.register(r'group_homework', GroupHomeWorkViewsSet)
