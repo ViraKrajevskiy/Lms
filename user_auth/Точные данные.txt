@@ -1,0 +1,94 @@
+Имя проекта: Exam project
+
+
+1.  .venv - виртуальное окружение проекта
+
+
+
+2.  config - тип файл/python package: python package
+    |
+    Внутрення Структура файла config:
+    |__
+    |  \__
+    |__   __init__.py - файл инициализации и глоблизации
+    |  \__
+    |__   asgi.py
+    |  \__
+    |__   settings.py - в этом файле все коды подключения к базе данных а также к урл и подключение apps для подключения
+    |  \__
+    |__   urls.py - здесь мы подключаем урлс с других аппов
+       \__
+          wsgi.py
+
+
+
+3.  homeworks - в этом файле храняться данные об домашних заданиях учеников
+    Данные попадають из user_auth с моделя HomeWorksGroup и StudentHomeWork эти модели в папке 1.user_auth 2.models 3.Hw_model  Место моделя: 4.model_home_work_lesson.py .
+
+
+
+4.  user_auth - тип файл/python package: python package.
+    |
+    Подключен ли этот user_auth к config да/нет : да.
+    |
+    Внутрення Структура файлов user_auth:
+    |
+    Имя проекта : user_auth.
+    |__
+    |  \._migrations_
+    |
+    |__
+    |  \._models_
+    |
+    |__
+    |  \._permissions_
+    |
+    |__
+    |  \._serializers_
+    |
+    |__
+    |  \._static_
+    |
+    |__
+    |  \._templates_
+    |
+    |__
+    |  \._view_
+    |
+    |__
+    |  \._views_sets_
+    |
+    |__
+    |  \__           __
+    |     __init__.py
+    |__
+    |  \__        __
+    |     admin.py
+    |__
+    |  \__       __
+    |     apps.py==не было внесено изменений.
+    |__
+    |  \__               __
+    |     create_token.py==Создание тоекна для проверки работы токенов
+    |
+    |__
+    |  \__        __
+    |     tests.py==Не было внесено изменений.
+    |
+    |__
+       \__       __
+          urls.py==Подключены url к config и также здесь все router.
+
+
+
+5. video_lessons - видео уроки.
+
+
+6. manage.py
+
+
+7. Models_Views_Serializer.docx
+
+8. Краткая документация по проделанной работе.txt
+
+9.Точные данные.txt

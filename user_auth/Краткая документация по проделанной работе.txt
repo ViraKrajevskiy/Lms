@@ -1,0 +1,78 @@
+1. Готово или почти готово:
+
+1 модели не до конца добавлены остались 3 4 модел точней фиелдов добавить надо.
+2 сериалайзер добавлен ноне настроены permissions.
+3
+4 осталось крад добавить и урл настроить также свагер нужно щяс настроить.
+
+2. Надо добавить:
+
+1. Permissions для каждого класса.
+2. Исправить логин и регистрацию.
+3. Добавить Logout.
+4. Frontend доработать.
+5. Deploy сделать.
+6. Купить домен.
+
+
+
+Модели и их названия:
+
+1.	User + +
+2.	GroupHomework + +
+3.	StudentHomework + +
+4.	Room  + + -
+5.	Lesson + +
+6.	StudentPay + +
+7.	PyedForWorker + +
+8.	Attendance + + +
+9.	StudyDay + +
+10.	CourseDuration + +
+11.	Course + +
+12.	Group   + +
+13.	Student + +
+14.	Parents + +
+15.	Teacher + +
+16.	Mentor + +
+17.	WorkDay + +
+18.	WorkerAttendance + + -
+19.	PositionLevel + +
+20.	Department + +
+21.	WorkerSalaryPayed + +
+22.	WorkerSalaryWaitedPay + +
+23.	Staff + +
+24. StudentPosition - + -
+25. AttendanceRecord + + -
+26. CourseLevel - + -
+
+Сериалайзеры:
+
+1.	CourseDurationSerializer + -
+2.	StudyDaySerializer + -
+3.	CourseSerializer + -
+4.	GroupSerializer + -
+5.	PayForWorkerSerializer + -
+6.	PayStudentSerializer + -
+7.	LessonSerializer + -
+8.	GroupHomeworkSerializer + -
+9.	StudentHomeworkSerializer + -
+10.	StaffSerializer + -
+11.	TeacherSerializer + -
+12.	MentorSerializer + -
+13.	StudentSerializer + -
+14.	ParentsSerializer + -
+15.	WorkDaySerializer + -
+16.	PositionLevelSerializer + -
+17.	DepartmentSerializer + -
+18.	WorkerSalaryPayedSerializer + -
+19.	WorkerSalaryWaitedPaySerializer + -
+20.	UserSerializer + -
+21. AttendanceSerializer + + +
+23. WorkerAttendance + - +
+24. RoomSerializer + - +
+25.
+
+Вюв сеты:
+
+
+

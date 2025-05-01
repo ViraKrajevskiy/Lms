@@ -4,5 +4,5 @@ from .models import *
 
 admin.site.register([StudyDay,  User,  Teacher,  CourseDuration,  StudentPay,  PyedForWorker,
                      Student,  PositionLevel,   WorkDay,  WorkerSalaryPayed,  WorkerAttendance,
-                     WorkerSalaryWaitedPay,  Course,  Staff,  Department,  Attendance, CourseLevel, AttendanceRecord,
+                     WorkerSalaryWaitedPay,  Course,  Staff,  Department,  Attendance, CourseLevel,
                      Parents,  GroupHomework,  StudentHomework,  Mentor,  Group,  Lesson,  Room , ])
