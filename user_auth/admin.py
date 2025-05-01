@@ -2,7 +2,30 @@ from django.contrib import admin
 from .models import *
 
 
-admin.site.register([StudyDay,  User,  Teacher,  CourseDuration,  StudentPay,  PyedForWorker,
-                     Student,  PositionLevel,   WorkDay,  WorkerSalaryPayed,  WorkerAttendance,
-                     WorkerSalaryWaitedPay,  Course,  Staff,  Department,  Attendance, CourseLevel,StudentAddHw,
-                     Parents,  GroupHomework,  StudentHomework,  Mentor,  Group,  Lesson,  Room , ])
+admin.site.register([StudyDay,
+                     User,
+                     Teacher,
+                     CourseDuration,
+                     StudentPay,
+                     PyedForWorker,
+                     Student,
+                     PositionLevel,
+                     WorkDay,
+                     WorkerSalaryPayed,
+                     WorkerAttendance,
+                                          WorkerSalaryWaitedPay,
+                     Course,
+                     Staff,
+                     Department,
+                     Attendance,
+                     CourseLevel,
+                     StudentAddHw,
+                     Parents,
+                     GroupHomework,
+                     StudentHomework,
+                     Mentor,
+                     Group,
+                     Lesson,
+                     Room ,
+
+                     ])
