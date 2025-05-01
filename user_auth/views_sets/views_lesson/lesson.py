@@ -4,7 +4,7 @@ StudentHomeworkSerializer,StudentAddHwSerializer
 
 from user_auth.models.Hw_model.model_lesson import *
 from user_auth.models.Hw_model.model_home_work_lesson import *
-from user_auth.permissions.student_permissions.homework_permission import *
+from user_auth.permissions.student_permissions.special_student_permission import *
 
 from rest_framework import viewsets
 from rest_framework.decorators import action
@@ -12,7 +12,7 @@ from rest_framework.response import Response
 from rest_framework import status
 
 from rest_framework.permissions import IsAuthenticated
-from user_auth.permissions.student_permissions.homework_permission import *
+from user_auth.permissions.student_permissions.special_student_permission import *
 from user_auth.permissions.student_permissions.student_permissions import *
 
 class StudentAddHwViewSet(viewsets.ModelViewSet):
