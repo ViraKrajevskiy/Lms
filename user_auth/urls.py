@@ -17,7 +17,7 @@ from user_auth.views_sets.viewset_attendance.attendance import *
 
 
 router = DefaultRouter()
-router.register(r'studentHwadd',StudentAddHwViewSet)
+router.register(r'student_hw_add',StudentAddHwViewSet)
 router.register(r'attendance' ,AttendanceViewSet)
 router.register(r'users', UserViewSet)
 router.register(r'group_homework', GroupHomeWorkViewsSet)
@@ -38,7 +38,12 @@ router.register(r'worker_salary_payed', PayForWorkerViewSet)
 router.register(r'worker_salary_waited_pay', WorkerSalaryWaitedPayViewSet)
 router.register(r'staff', StaffViewsSet)
 router.register(r'pay_for_student', PayStudentViewsSet)
-# router.register(r'')
+router.register(r'course_level',CourseLevelViewSet)
+router.register(r'worker_salary_payed',WorkerSalaryPayedViewSet)
+router.register(r'worker_attendance',WorkerAttendanceViewSet)
+router.register(r'pay_student',PayStudentViewsSet)
+router.register(r'room',RoomViewSet)
+
 
 
 
