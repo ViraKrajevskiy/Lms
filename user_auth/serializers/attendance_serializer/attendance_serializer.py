@@ -9,3 +9,5 @@ class AttendanceSerializer(serializers.ModelSerializer):
 
 class BulkAttendanceUpdateSerializer(serializers.Serializer):
     updates = serializers.DictField()
+
+

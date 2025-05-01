@@ -1,3 +1,4 @@
+from user_auth.serializers.course_serializer.course_and_other import RoomSerializer
 from user_auth.serializers.special_lesson_serializer.lesson_serializer import LessonSerializer, GroupHomeworkSerializer, \
     StudentHomeworkSerializer
 from user_auth.models.Hw_model.model_lesson import *
@@ -17,6 +18,10 @@ from user_auth.permissions.student_permissions.student_permissions import *
 class LessonViewsSet(viewsets.ModelViewSet):
     queryset = Lesson.objects.all()
     serializer_class = LessonSerializer
+
+class RoomViewSet(viewsets.ModelViewSet):
+    queryset = Room.objects.all()
+    serializer_class = RoomSerializer
 
 class GroupHomeWorkViewsSet(viewsets.ModelViewSet):
     queryset = GroupHomework.objects.all()

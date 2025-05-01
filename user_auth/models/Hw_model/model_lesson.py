@@ -5,11 +5,13 @@ from django.db import models
 
 from user_auth.models.student_package.model_attandace import *
 
-
+# комната на которой проходит урок
 class Room(BaseModel):
     rom_name = CharField(max_length=90,default='Standard_room')
     rom_number = models.IntegerField()
 
+
+# класс урок
 class Lesson(BaseModel):
     teacher = models.ForeignKey('Teacher', on_delete=models.SET_NULL, null=True, blank=True)
     mentor = models.ForeignKey('Mentor', on_delete=models.SET_NULL, null=True, blank=True)

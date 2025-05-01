@@ -2,7 +2,7 @@
 
 1 модели не до конца добавлены остались 3 4 модел точней фиелдов добавить надо.
 2 сериалайзер добавлен ноне настроены permissions.
-3
+5. Deploy сделано.
 4 осталось крад добавить и урл настроить также свагер нужно щяс настроить.
 
 2. Надо добавить:
@@ -11,9 +11,42 @@
 2. Исправить логин и регистрацию.
 3. Добавить Logout.
 4. Frontend доработать.
-5. Deploy сделать.
+
 6. Купить домен.
 
+
+1 BaseModel           - -
+2 CustomUserManager   - -
+
+3 User                UserSerializer                         UserViewSet
+4 GroupHomework       GroupHomeworkSerializer                GroupHomeWorkViewsSet
+5 StudentHomework     StudentHomeworkSerializer              StudentHomeworkViewSet
+6 Room                RoomSerializer                         RoomViewSet
+7 Lesson              LessonSerializer                       LessonViewsSet
+8 StudentPay          PayStudentSerializer                   PayStudentViewsSet
+9 PyedForWorker       PayForWorkerSerializer                 PayForWorkerViewSet
+10 Attendance         AttendanceSerializer                   AttendanceViewSet
+11 StudyDay           StudyDaySerializer                     StudyDayViewSet
+12 CourseDuration     CourseDurationSerializer               CourseDurationViewSet
+13 CourseLevel        CourseLevelSerializer                  CourseLevelViewSet
+14 Course             CourseSerializer                       CourseViewSet
+15 Group              GroupSerializer                        GroupViewSet
+16 Student            StudentSerializer                      StudentViewSet
+17 Parents            ParentsSerializer                      ParentViewSet
+18 Teacher            TeacherSerializer                      TeacherViewSet
+19 Mentor             MentorSerializer                       MentorViewSet
+20 WorkDay            WorkDaySerializer                      WorkDayViewSet
+21 WorkerAttendance   WorkerAttendanceSerializer             WorkerAttendanceViewSet
+22 PositionLevel      PositionLevelSerializer                PositionLevelViewSet
+23 Department         DepartmentSerializer                   DepartmentViewSet
+24 WorkerSalaryPayed  WorkerSalaryPayedSerializer            WorkerSalaryPayedViewSet
+25 WorkerSalaryWaitedPay   WorkerSalaryWaitedPaySerializer   WorkerSalaryWaitedPayViewSet
+26 Staff             StaffSerializer                         StaffViewsSet
+
+27                   CustomTokenObtainPairSerializer
+28            LogoutView
+29            LoginView
+30                   LoginSerializer
 
 
 Модели и их названия:

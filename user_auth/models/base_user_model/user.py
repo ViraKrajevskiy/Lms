@@ -2,6 +2,7 @@ from django.core.validators import RegexValidator
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, PermissionsMixin
 
+# базовая модель которая считывает время когда обновлен и создан
 class BaseModel(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -9,7 +10,7 @@ class BaseModel(models.Model):
     class Meta:
         abstract = True
 
-
+# создание кастомногго моделя пользователя
 class CustomUserManager(BaseUserManager):
     def create_user(self, phone_number, email=None, password=None, **extra_fields):
         if not phone_number:
@@ -45,7 +46,7 @@ class CustomUserManager(BaseUserManager):
         return self.create_user(phone_number, email, password, **extra_fields)
 
 
-
+# и сам базовый класс вместо базового класса джанго
 class User(AbstractBaseUser, PermissionsMixin, BaseModel):
     class Role(models.TextChoices):
         ADMIN = 'admin', 'Админ'

@@ -3,7 +3,7 @@ from django.db.models import JSONField
 from django.utils import timezone
 from user_auth.models.student_package.model_group import Group
 
-
+# прищел или не прищел ученик
 class Attendance(models.Model):
     STATUS_CHOICES = [
         ('absent', 'Не пришел'),
@@ -26,12 +26,14 @@ class Attendance(models.Model):
         help_text='Формат: {"student_id": "status"}'
     )
 
+    #
     class Meta:
         unique_together = ['group', 'date']
         ordering = ['-date']
 
     def __str__(self):
         return f"Посещение {self.group} - {self.date}"
+
 
     def set_student_status(self, student_id, status):
         self.students_status[str(student_id)] = status

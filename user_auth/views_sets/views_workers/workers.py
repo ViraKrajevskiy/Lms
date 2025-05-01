@@ -2,6 +2,7 @@
 from rest_framework import viewsets
 from user_auth.models.workers_models.model_teacher import *
 from user_auth.serializers.stafff_serializer.staff import *
+from user_auth.serializers.things_for_workers_serializer.WorkerAttandanceSerializer import WorkerAttendanceSerializer
 from user_auth.serializers.things_for_workers_serializer.teacher_serializer import PositionLevelSerializer,DepartmentSerializer, WorkerSalaryPayedSerializer, WorkerSalaryWaitedPaySerializer, WorkDaySerializer
 
 
@@ -9,6 +10,10 @@ class PositionLevelViewSet(viewsets.ModelViewSet):
     queryset = PositionLevel.objects.all()
     serializer_class = PositionLevelSerializer
 
+
+class WorkerAttendanceViewSet(viewsets.ModelViewSet):
+    queryset = WorkerAttendance.objects.all()
+    serializer_class = WorkerAttendanceSerializer
 
 
 

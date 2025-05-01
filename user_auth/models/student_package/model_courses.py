@@ -1,7 +1,7 @@
 from user_auth.models import BaseModel
 from django.db import models
 
-
+# дни учебы
 class StudyDay(models.Model):
     Course_Days = [
         ('mon', 'Понедельник'),
@@ -18,6 +18,7 @@ class StudyDay(models.Model):
     def __str__(self):
         return self.title
 
+# продолжительность курса
 class CourseDuration(BaseModel):
     total_duration = models.IntegerField()
     course_start_time = models.DateField()
@@ -27,6 +28,7 @@ class CourseDuration(BaseModel):
     def __str__(self):
         return f"{self.total_duration} недель с {self.course_start_time} по {self.course_end_time}"
 
+# левел курса начинающий или уже продвинутый
 class CourseLevel(BaseModel):
     COURSE_LEVELS = [
         ('beg', 'Базовый'),
@@ -38,6 +40,7 @@ class CourseLevel(BaseModel):
     def __str__(self):
         return f"{self.course_level}"
 
+# курс
 class Course(BaseModel):
     course_cost_per_week = models.IntegerField()
     course_total_cost = models.IntegerField(editable=False)
@@ -57,24 +60,3 @@ class Course(BaseModel):
 
     def __str__(self):
         return self.course_name
-
-
-
-# class Course(BaseModel):
-#     course_cost_per_week = models.IntegerField()
-#     course_total_cost = models.IntegerField(editable=False)
-#     course_name = models.CharField(max_length=90)
-#     course_descriptions = models.TextField(max_length=150)
-#     teacher = models.ForeignKey('Teacher', on_delete=models.SET_NULL, null=True, related_name='courses')
-#     mentor = models.ForeignKey('Mentor', on_delete=models.SET_NULL, null=True, related_name='courses')
-#
-#
-#     course_duration = models.OneToOneField(CourseDuration, on_delete=models.CASCADE, related_name='course')
-#
-#     def save(self, *args, **kwargs):
-#         if self.course_duration:
-#             self.course_total_cost = self.course_cost_per_week * self.course_duration.total_duration
-#         super().save(*args, **kwargs)
-#
-#     def __str__(self):
-#         return self.course_name

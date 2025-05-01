@@ -12,3 +12,8 @@ class StudyDayViewSet(viewsets.ModelViewSet):
 class CourseDurationViewSet(viewsets.ModelViewSet):
     queryset = CourseDuration.objects.all()
     serializer_class = CourseDurationSerializer
+
+
+class CourseLevelViewSet(viewsets.ModelViewSet):
+    queryset = CourseLevel.objects.all()
+    serializer_class = CourseLevelSerializer

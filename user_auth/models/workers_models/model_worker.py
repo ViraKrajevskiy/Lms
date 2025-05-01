@@ -1,7 +1,7 @@
 from django.utils import timezone
 from user_auth.models.base_user_model.user import BaseModel
 from user_auth.models.student_package.model_courses import *
-
+#рабочие дни работника
 class WorkDay(BaseModel):
     DAYS_OF_WEEK = [
         ('mon', 'Понедельник'),
@@ -20,6 +20,7 @@ class WorkDay(BaseModel):
         return self.title
 
 
+# прищел ли работник или нет
 class WorkerAttendance(BaseModel):
     ATTENDANCE_STATUS_CHOICES_WORKER = [
         ('P', 'Пришел'),
@@ -36,7 +37,7 @@ class WorkerAttendance(BaseModel):
     def __str__(self):
         return f"{self.staff} - {self.get_status_display()} - {self.date}"
 
-
+# место работника учитель старший или работник
 class PositionLevel(models.Model):
     name = models.CharField(max_length=50, unique=True)
     description = models.TextField(blank=True, null=True)
@@ -44,7 +45,7 @@ class PositionLevel(models.Model):
     def __str__(self):
         return self.name
 
-
+#какой департамент учителей или колл центра
 class Department(BaseModel):
     name = models.CharField(max_length=100)
     count_personal = models.IntegerField()
@@ -52,7 +53,7 @@ class Department(BaseModel):
     def __str__(self):
         return f"{self.name} ({self.count_personal} персонала)"
 
-
+# сколько платиться денег заплачено пользователю
 class WorkerSalaryPayed(BaseModel):
     total_amount_payed = models.IntegerField()
     datePayDay = models.DateTimeField(default=timezone.now)
@@ -60,7 +61,7 @@ class WorkerSalaryPayed(BaseModel):
     def __str__(self):
         return f"Оплачено: {self.total_amount_payed} в {self.datePayDay}"
 
-
+# Ожидаеться олата денег
 class WorkerSalaryWaitedPay(BaseModel):
     worker = models.ForeignKey('Staff', on_delete=models.CASCADE, related_name='waiting_salaries', null=True, blank=True)
     total_amount = models.IntegerField()
@@ -69,7 +70,7 @@ class WorkerSalaryWaitedPay(BaseModel):
     def __str__(self):
         return f"Ожидается: {self.total_amount} до {self.didnt_payed_days}"
 
-
+# модель Рабочего
 class Staff(BaseModel):
     firstname = models.CharField(max_length=30)
     surname = models.CharField(max_length=30)

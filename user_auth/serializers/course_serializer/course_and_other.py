@@ -25,3 +25,9 @@ class RoomSerializer(serializers.ModelSerializer):
     class Meta:
         model = Room
         fields = '__all__'
+
+
+class CourseLevelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CourseLevel
+        fields = '__all__'
