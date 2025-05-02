@@ -19,7 +19,7 @@ SECRET_KEY = 'django-insecure-hks#ljnbbcf9=&7ni(aq&(q4jod4t*1f%qs1d551=4nuw-9jxt
 DEBUG = True
 
 ALLOWED_HOSTS = ['*','142.93.172.100']
-
+# add django otp
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
