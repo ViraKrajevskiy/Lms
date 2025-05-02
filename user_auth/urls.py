@@ -3,6 +3,10 @@ from rest_framework.routers import DefaultRouter
 
 from user_auth.serializers.login_and_registration_serializer.logins_serializer import *
 
+from user_auth.serializers.login_and_registration_serializer.logins_serializer import (
+    LoginView, LogoutView, GenerateOTPView, VerifyOTPAndChangePasswordView
+)
+from user_auth.serializers.login_and_registration_serializer.token_obtain import CustomTokenObtainPairView
 
 from user_auth.views_sets.views_workers.workers import *
 from user_auth.views_sets.view_sets_user.user_views_set import *
@@ -48,9 +52,11 @@ router.register(r'room',RoomViewSet)
 
 
 urlpatterns = [
-    path('api/login/', LoginView.as_view(), name='login'),
-    path('api/logout/', LogoutView.as_view(), name='logout'),
-    # path('api/register/', RegisterView.as_view(), name='register'),
+    path('login/', LoginView.as_view(), name='login'),
+    path('logout/', LogoutView.as_view(), name='logout'),
+    path('token/', CustomTokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('generate-otp/', GenerateOTPView.as_view(), name='generate-otp'),
+    path('verify-otp/', VerifyOTPAndChangePasswordView.as_view(), name='verify-otp'),
 ]
 
 # Добавление маршрутов из DefaultRouter

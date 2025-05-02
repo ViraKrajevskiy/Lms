@@ -2,7 +2,8 @@ from django.contrib import admin
 from .models import *
 
 
-admin.site.register([StudyDay,
+admin.site.register([
+                     StudyDay,
                      User,
                      Teacher,
                      CourseDuration,
@@ -13,7 +14,7 @@ admin.site.register([StudyDay,
                      WorkDay,
                      WorkerSalaryPayed,
                      WorkerAttendance,
-                                          WorkerSalaryWaitedPay,
+                     WorkerSalaryWaitedPay,
                      Course,
                      Staff,
                      Department,
@@ -28,4 +29,4 @@ admin.site.register([StudyDay,
                      Lesson,
                      Room ,
 
-                     ])
+                    ])

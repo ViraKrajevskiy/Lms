@@ -1,5 +1,3 @@
-# user_auth/serializers/login_and_registration_serializer/token_serializer.py
-
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 
@@ -7,11 +5,11 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
     def get_token(cls, user):
         token = super().get_token(user)
-
-        # Добавляем пользовательские данные в токен
+        
+        # Добавляем пользовательскую информацию в токен
         token['phone_number'] = user.phone_number
         token['role'] = user.role
-
+        
         return token
 
 class CustomTokenObtainPairView(TokenObtainPairView):
