@@ -1,10 +1,4 @@
-from user_auth.permissions.hw_model_permission.group_hw_permission import GroupHomeworkPermissions
-from user_auth.permissions.hw_model_permission.student_hw_permission import StudentHomeworkPermissions
-from user_auth.permissions.lesson_permission.lesson_permission import LessonPermissions
-from user_auth.permissions.lesson_permission.room_permission import RoomPermissions
-from user_auth.permissions.special_permissions.special_permissions import IsStudent, IsSupervisor, IsAdmin, IsStaff, \
-    IsTeacher
-from user_auth.permissions.student_package_permission.student_add_hw_permission import StudentAddHwPermissions
+from user_auth.permissions.main_model_permission.Main_model import RoleBasedPermission
 from user_auth.serializers.course_serializer.course_and_other import RoomSerializer
 from user_auth.serializers.special_lesson_serializer.lesson_serializer import LessonSerializer, GroupHomeworkSerializer, \
 StudentHomeworkSerializer,StudentAddHwSerializer
@@ -23,26 +17,26 @@ from rest_framework.permissions import IsAuthenticated
 class StudentAddHwViewSet(viewsets.ModelViewSet):
     serializer_class = StudentAddHwSerializer
     queryset = StudentAddHw.objects.all()
-    permission_classes = [IsAuthenticated, StudentAddHwPermissions]
+    permission_classes = [IsAuthenticated, RoleBasedPermission]
 
 class LessonViewsSet(viewsets.ModelViewSet):
     queryset = Lesson.objects.all()
     serializer_class = LessonSerializer
-    permission_classes = [IsAuthenticated, LessonPermissions]
+    permission_classes = [IsAuthenticated, RoleBasedPermission]
 
 
 class RoomViewSet(viewsets.ModelViewSet):
     queryset = Room.objects.all()
     serializer_class = RoomSerializer
-    permission_classes = [IsAuthenticated, RoomPermissions]
+    permission_classes = [IsAuthenticated, RoleBasedPermission]
 
 class GroupHomeWorkViewsSet(viewsets.ModelViewSet):
     queryset = GroupHomework.objects.all()
     serializer_class = GroupHomeworkSerializer
-    permission_classes = [IsAuthenticated, GroupHomeworkPermissions]
+    permission_classes = [IsAuthenticated, RoleBasedPermission]
 
 
 class StudentHomeworkViewSet(viewsets.ModelViewSet):
     serializer_class = StudentHomeworkSerializer
     queryset = StudentHomework.objects.all()
-    permission_classes = [IsAuthenticated, StudentHomeworkPermissions]
+    permission_classes = [IsAuthenticated, RoleBasedPermission]

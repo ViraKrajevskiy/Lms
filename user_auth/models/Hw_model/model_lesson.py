@@ -10,6 +10,9 @@ class Room(BaseModel):
     rom_name = CharField(max_length=90,default='Standard_room')
     rom_number = models.IntegerField()
 
+    def __str__(self):
+        return  f"{self.rom_name}, {self.rom_number}"
+
 
 # класс урок
 class Lesson(BaseModel):
@@ -20,3 +23,6 @@ class Lesson(BaseModel):
     group_data = models.OneToOneField('GroupHomework',on_delete=models.CASCADE,related_name='group_and_hw')
     rom_numb = models.ForeignKey('Room',on_delete=models.SET_NULL,blank=True, null=True)
     attendance = models.ManyToManyField('Attendance',blank=True,related_name='Attendance')
+
+    def __str__(self):
+        return  f"{self.lesson_topik}, {self.rom_numb}"

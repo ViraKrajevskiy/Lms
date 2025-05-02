@@ -10,3 +10,4 @@ from user_auth.models.workers_models.model_worker import *
 from user_auth.models.workers_models.model_teacher import *
 from user_auth.models.pay_model_salary.pay_model_for_worker import *
 from user_auth.models.pay_model_salary.pay_model_for_student import *
+from user_auth.models.Otp_model.email_model import *

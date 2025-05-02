@@ -73,7 +73,7 @@ class User(AbstractBaseUser, PermissionsMixin, BaseModel):
     REQUIRED_FIELDS = []
 
     def __str__(self):
-        return self.phone_number
+        return f"{self.phone_number}___{self.role}"
 
     def is_teacher(self):
         return self.role == self.Role.TEACHER

@@ -1,7 +1,0 @@
-from rest_framework.permissions import IsAuthenticated, BasePermission
-
-from user_auth.permissions.workers_models_permission.worker_salary_payed_permission import WorkerSalaryPayedPermissions
-
-
-class WorkerSalaryWaitedPayPermissions(WorkerSalaryPayedPermissions):
-    pass

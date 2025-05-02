@@ -8,6 +8,6 @@ from user_auth.serializers.group_serializers.group_serializer import *
 from user_auth.serializers.user_serializer.user_serializer import *
 from user_auth.serializers.pay_serializer.pay_student_serializer import *
 from user_auth.serializers.pay_serializer.pay_staff_model import *
-from user_auth.serializers.login_and_registration_serializer.token_serializer import *
 from user_auth.serializers.attendance_serializer.attendance_serializer import *
 from user_auth.serializers.login_and_registration_serializer.logins_serializer import *
+from user_auth.serializers.login_and_registration_serializer.serializer_change_password import *

@@ -1,3 +1,5 @@
+from datetime import date
+
 from django.utils import timezone
 from user_auth.models.base_user_model.user import BaseModel
 from user_auth.models.student_package.model_courses import *
@@ -31,7 +33,7 @@ class WorkerAttendance(BaseModel):
 
     staff = models.ForeignKey('Staff', on_delete=models.CASCADE, related_name='attendances')
     work_day = models.ForeignKey(WorkDay, on_delete=models.CASCADE)
-    date = models.DateField(default=timezone.now)
+    date = models.DateField(default=date.today)
     status = models.CharField(max_length=1, choices=ATTENDANCE_STATUS_CHOICES_WORKER)
 
     def __str__(self):
@@ -48,15 +50,18 @@ class PositionLevel(models.Model):
 #какой департамент учителей или колл центра
 class Department(BaseModel):
     name = models.CharField(max_length=100)
-    count_personal = models.IntegerField()
+
+    def count_personal(self):
+        return self.workers.count()
 
     def __str__(self):
-        return f"{self.name} ({self.count_personal} персонала)"
+        return f"{self.name} ({self.count_personal()} персонала)"
+
 
 # сколько платиться денег заплачено пользователю
 class WorkerSalaryPayed(BaseModel):
     total_amount_payed = models.IntegerField()
-    datePayDay = models.DateTimeField(default=timezone.now)
+    datePayDay = models.DateField(default=date.today)
 
     def __str__(self):
         return f"Оплачено: {self.total_amount_payed} в {self.datePayDay}"
@@ -65,7 +70,7 @@ class WorkerSalaryPayed(BaseModel):
 class WorkerSalaryWaitedPay(BaseModel):
     worker = models.ForeignKey('Staff', on_delete=models.CASCADE, related_name='waiting_salaries', null=True, blank=True)
     total_amount = models.IntegerField()
-    didnt_payed_days = models.DateTimeField(default=timezone.now)
+    didnt_payed_days = models.DateField(default=date.today)
 
     def __str__(self):
         return f"Ожидается: {self.total_amount} до {self.didnt_payed_days}"
@@ -84,4 +89,4 @@ class Staff(BaseModel):
     salary_balance = models.DecimalField(max_digits=12, decimal_places=2, default=0)
 
     def __str__(self):
-        return f"{self.firstname} {self.surname} - {self.position}"
+        return f"{self.firstname}_{self.surname} - {self.position}_{self.department}"
