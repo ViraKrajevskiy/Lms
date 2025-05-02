@@ -13,7 +13,6 @@ from rest_framework import status
 
 from rest_framework.permissions import IsAuthenticated
 
-
 class StudentAddHwViewSet(viewsets.ModelViewSet):
     serializer_class = StudentAddHwSerializer
     queryset = StudentAddHw.objects.all()
