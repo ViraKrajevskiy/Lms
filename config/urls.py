@@ -5,7 +5,7 @@ from drf_yasg import openapi
 from rest_framework import permissions
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
-from user_auth.serializers.login_and_registration_serializer.token_obtain import CustomTokenObtainPairView
+
 
 schema_view = get_schema_view(
     openapi.Info(

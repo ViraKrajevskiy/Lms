@@ -31,11 +31,12 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'rest_framework_simplejwt',
-    'django_otp.plugins.otp_totp'
+    'django_otp',
+    'django_otp.plugins.otp_totp',
     'drf_yasg',
-
     'rest_framework_simplejwt.token_blacklist',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

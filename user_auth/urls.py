@@ -1,12 +1,11 @@
 from django.urls import path
 from rest_framework.routers import DefaultRouter
 
-from user_auth.serializers.login_and_registration_serializer.logins_serializer import *
+from user_auth.serializers.login_and_registration_serializer.token_obtain import CustomTokenObtainPairView
 
 from user_auth.serializers.login_and_registration_serializer.logins_serializer import (
     LoginView, LogoutView, GenerateOTPView, VerifyOTPAndChangePasswordView
 )
-from user_auth.serializers.login_and_registration_serializer.token_obtain import CustomTokenObtainPairView
 
 from user_auth.views_sets.views_workers.workers import *
 from user_auth.views_sets.view_sets_user.user_views_set import *
@@ -38,7 +37,7 @@ router.register(r'mentors', MentorViewSet)
 router.register(r'work_days', WorkDayViewSet)
 router.register(r'position_levels', PositionLevelViewSet)
 router.register(r'departments', DepartmentViewSet)
-router.register(r'worker_salary_payed', PayForWorkerViewSet)
+router.register(r'payed_for_worker_salary', PayForWorkerViewSet)
 router.register(r'worker_salary_waited_pay', WorkerSalaryWaitedPayViewSet)
 router.register(r'staff', StaffViewsSet)
 router.register(r'pay_for_student', PayStudentViewsSet)
