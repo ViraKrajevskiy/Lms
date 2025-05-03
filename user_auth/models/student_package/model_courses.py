@@ -22,18 +22,23 @@ class StudyDay(models.Model):
         return dict(self.Course_Days).get(self.code, self.title)
 
 # продолжительность курса
-
 class CourseDuration(BaseModel):
     course_start_time = models.DateField()
     course_end_time = models.DateField()
     work_days = models.ManyToManyField('StudyDay', related_name='course_durations')
+    total_duration = models.IntegerField(editable=False, null=True)  # Добавление поля для продолжительности курса
 
-    def __str__(self):
+    def save(self, *args, **kwargs):
+        # Вычисляем продолжительность курса
         delta = relativedelta(self.course_end_time, self.course_start_time)
         months = delta.years * 12 + delta.months
         if delta.days > 0:
-            months += 1  # частичный месяц тоже считаем
-        return f"({months} мес.) с {self.course_start_time} по {self.course_end_time}"
+            months += 1  # Учитываем частичный месяц
+        self.total_duration = months  # Заполняем поле total_duration
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f" недель ({self.total_duration} мес.) с {self.course_start_time} по {self.course_end_time}"
 
 
 
@@ -58,14 +63,16 @@ class Course(BaseModel):
     teacher = models.ForeignKey('Teacher', on_delete=models.SET_NULL, null=True, blank=True, related_name='courses')
     mentor = models.ForeignKey('Mentor', on_delete=models.SET_NULL, null=True, blank=True, related_name='courses')
 
-    course_level = models.ForeignKey(CourseLevel, on_delete=models.SET_NULL, null=True, blank=True, related_name='courses')  # <-- вот тут добавили связь
+    course_level = models.ForeignKey(CourseLevel, on_delete=models.SET_NULL, null=True, blank=True, related_name='courses')
 
     course_duration = models.OneToOneField(CourseDuration, on_delete=models.CASCADE, related_name='course')
 
     def save(self, *args, **kwargs):
+        # Используем поле total_duration из модели CourseDuration для расчета стоимости курса
         if self.course_duration:
             self.course_total_cost = self.course_cost_per_week * self.course_duration.total_duration
         super().save(*args, **kwargs)
 
     def __str__(self):
         return self.course_name
+
