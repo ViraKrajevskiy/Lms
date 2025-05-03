@@ -65,3 +65,6 @@ class StudentAddHw(BaseModel):
 
     def __str__(self):
         return f"Доп. файл к ДЗ #{self.homework.id}"
+
+
+

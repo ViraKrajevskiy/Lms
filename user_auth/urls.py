@@ -2,6 +2,8 @@ from django.urls import path,include
 from rest_framework.routers import DefaultRouter
 
 from user_auth.serializers.login_and_registration_serializer.logins_serializer import *
+#
+# from user_auth.view.little_api import *
 
 from user_auth.views_sets.views_login.login import *
 from user_auth.views_sets.views_login.logout import *
@@ -20,6 +22,7 @@ from user_auth.views_sets.viewset_attendance.attendance import *
 
 
 router = DefaultRouter()
+# path('rooms/total/', total_room_count, name='total-room-count'),
 router.register(r'student_hw_add',StudentAddHwViewSet)
 router.register(r'attendance' ,AttendanceViewSet)
 router.register(r'users', UserViewSet)
