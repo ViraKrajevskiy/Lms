@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 
+#otp для смены пароля
 class OTPCode(models.Model):
     user = models.ForeignKey('User', on_delete=models.CASCADE)
     code = models.CharField(max_length=6)

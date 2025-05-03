@@ -26,7 +26,7 @@ class Attendance(models.Model):
         help_text='Формат: {"student_id": "status"}'
     )
 
-    #
+    # /
     class Meta:
         unique_together = ['group', 'date']
         ordering = ['-date']
@@ -34,7 +34,7 @@ class Attendance(models.Model):
     def __str__(self):
         return f"Посещение {self.group} - {self.date}"
 
-
+    # status студента 
     def set_student_status(self, student_id, status):
         self.students_status[str(student_id)] = status
         self.save()

@@ -3,7 +3,7 @@ from django.db.models import *
 
 from user_auth.models.base_user_model.user import BaseModel
 
-# оплата ученика
+# оплата ученика/
 class StudentPay(BaseModel):
     PAYMENT_TYPE_CHOICES = [
         ('Cr', 'Картой'),

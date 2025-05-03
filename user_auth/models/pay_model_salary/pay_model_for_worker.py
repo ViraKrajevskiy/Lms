@@ -3,7 +3,7 @@ from rest_framework.fields import DateTimeField
 from user_auth.models.base_user_model.user import BaseModel
 from user_auth.models.workers_models.model_worker import Staff
 
-# оплачено работнику
+# оплачено работнику /
 class PyedForWorker(BaseModel):
     card_number = models.CharField(max_length=16, blank=True, null=True)
     work_time = models.DateTimeField(auto_now_add=True)

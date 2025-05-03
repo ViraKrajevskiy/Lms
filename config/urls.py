@@ -16,7 +16,7 @@ schema_view = get_schema_view(
     public=True,
     permission_classes=(permissions.AllowAny,),
 )
-
+# vl
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('user_auth.urls')),
