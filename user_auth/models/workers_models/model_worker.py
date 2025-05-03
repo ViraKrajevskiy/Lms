@@ -75,6 +75,13 @@ class WorkerSalaryWaitedPay(BaseModel):
     def __str__(self):
         return f"Ожидается: {self.total_amount} до {self.didnt_payed_days}"
 
+
+class StaffManager(models.Manager):
+    def active_staff(self):
+        # Фильтруем сотрудников, исключая студентов
+        return self.exclude(user__role='student')
+
+
 # модель Рабочего
 class Staff(BaseModel):
     firstname = models.CharField(max_length=30)
@@ -87,6 +94,8 @@ class Staff(BaseModel):
     position = models.ForeignKey(PositionLevel, on_delete=models.SET_NULL, null=True)
     work_days = models.ManyToManyField(WorkDay, blank=True, related_name='staff_members')
     salary_balance = models.DecimalField(max_digits=12, decimal_places=2, default=0)
+
+    objects = StaffManager() # подключаем менеджер
 
     def __str__(self):
         return f"{self.firstname}_{self.surname} - {self.position}_{self.department}"

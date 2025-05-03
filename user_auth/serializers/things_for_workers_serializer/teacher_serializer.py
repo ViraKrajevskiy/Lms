@@ -28,4 +28,4 @@ class WorkerSalaryPayedSerializer(serializers.ModelSerializer):
 class WorkerSalaryWaitedPaySerializer(serializers.ModelSerializer):
     class Meta:
         model = WorkerSalaryWaitedPay
-        fields = '__all__'
+        fields = ['total_amount', 'didnt_payed_days']

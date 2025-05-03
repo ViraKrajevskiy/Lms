@@ -8,7 +8,6 @@ from user_auth.serializers.attendance_serializer.attendance_serializer import At
 from user_auth.models.student_package.model_attandace import *
 from user_auth.serializers.attendance_serializer.attendance_serializer import *
 
-
 class AttendanceViewSet(viewsets.ModelViewSet):
     serializer_class = AttendanceSerializer
     queryset =Attendance.objects.all()

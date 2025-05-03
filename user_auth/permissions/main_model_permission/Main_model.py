@@ -11,114 +11,115 @@ ROLE_PERMISSIONS = {
     },
     'GroupHomework': {
         'supervisor': '__all__',
-        'admin': '__all__',
-        'worker': '__all__',
+        'admin': ['list', 'retrieve', 'create', 'update'],
+        'worker': ['list', 'retrieve', 'create', 'update'],
         'teacher': ['list', 'retrieve', 'create', 'update'],  # учитель может CRUD кроме удаления
         'student': ['list', 'retrieve'],                      # студент видит домашки своей группы
     },
     'StudentHomework': {
         'supervisor': '__all__',
-        'admin': '__all__',
-        'worker': '__all__',
+        'admin': ['list', 'retrieve', 'create', 'update'],
+        'worker': ['list', 'retrieve', 'create', 'update'],
         'student': ['create', 'list', 'retrieve', 'update'],  # студент загружает/редактирует до дедлайна
     },
     'Room': {
         'supervisor': '__all__',
-        'admin': '__all__',
-        'worker': ['list', 'retrieve', 'create', 'update'],   # staff может CRUD кроме удаления
+        'admin': ['list', 'retrieve', 'create', 'update'],
+        'worker': ['list','retrieve', 'create', 'update'],   # staff может CRUD кроме удаления
     },
     'Lesson': {
         'supervisor': '__all__',
-        'admin': '__all__',
+        'admin': ['list', 'retrieve', 'create', 'update'],
         'worker': ['list', 'retrieve', 'create', 'update'],
         'teacher': ['list', 'retrieve', 'create', 'update'],  # учитель может CRUD кроме удаления
         'student': ['list', 'retrieve'],                      # студент может просматривать и оценивать один раз
     },
     'PayStudent': {
         'supervisor': '__all__',
-        'admin': '__all__',
+        'admin': ['list', 'retrieve', 'create', 'update'],
         'worker': ['list', 'retrieve'],                       # staff просматривать
         'student': ['create', 'list', 'retrieve'],            # студент оплачивает и смотрит свои платежи
     },
     'PayForWorker': {
-        'supervisor': '__all__',
-        'admin': '__all__',
+        'supervisor': ['list', 'retrieve', 'create', 'update'],
+        'admin': ['list', 'retrieve'],
         'worker': ['list', 'retrieve'],
     },
     'Attendance': {
         'supervisor': '__all__',
-        'admin': '__all__',
+        'admin': ['list', 'retrieve', 'create', 'update'],
         'worker': ['list', 'retrieve'],
         'teacher': ['list', 'retrieve', 'create', 'update'],  # учитель отмечает посещаемость
     },
     'StudyDay': {
         'supervisor': '__all__',
-        'admin': '__all__',
+        'admin': ['list', 'retrieve', 'create', 'update'],
         'worker': ['list', 'retrieve', 'create', 'update'],
     },
     'CourseDuration': {
         'supervisor': '__all__',
-        'admin': '__all__',
+        'admin': ['list', 'retrieve', 'create', 'update'],
         'worker': ['list', 'retrieve', 'create', 'update'],
     },
     'CourseLevel': {
         'supervisor': '__all__',
-        'admin': '__all__',
+        'admin': ['list', 'retrieve', 'create', 'update'],
         'worker': ['list', 'retrieve', 'create', 'update'],
     },
     'Course': {
         'supervisor': '__all__',
-        'admin': '__all__',
-        'worker': ['list', 'retrieve', 'create', 'update'],
+        'admin': ['list', 'retrieve', 'create', 'update'],
+        'worker': ['list', 'retrieve', 'create', 'update']  ,
+        'teacher':['list']
     },
     'Group': {
         'supervisor': '__all__',
-        'admin': '__all__',
+        'admin':['list', 'retrieve', 'create', 'update'],
         'worker': ['list', 'retrieve', 'create', 'update'],
         'teacher': ['list', 'retrieve'],                      # учитель видит свою группу
         'student': ['retrieve'],                              # студент видит информацию о своей группе
     },
     'Student': {
         'supervisor': '__all__',
-        'admin': '__all__',
+        'admin': ['list', 'retrieve', 'create', 'update'],
         'worker': ['list', 'retrieve', 'create', 'update'],
     },
     'Parent': {
         'supervisor': '__all__',
-        'admin': '__all__',
+        'admin': ['list', 'retrieve', 'create', 'update'],
         'worker': ['list', 'retrieve', 'create', 'update'],
     },
     'Teacher': {
         'supervisor': '__all__',
-        'admin': '__all__',
+        'admin': ['list', 'retrieve', 'create', 'update'],
         'teacher': ['retrieve', 'partial_update'],            # учитель меняет только проживание и телефон
         'worker': ['list', 'retrieve'],                      # staff просматривает данные учителя
     },
     'Mentor': {
         'supervisor': '__all__',
-        'admin': '__all__',
+        'admin': ['list', 'retrieve', 'create', 'update'],
         'worker': ['list', 'retrieve'],
         'teacher': ['retrieve', 'partial_update'],            # ментор как учитель
     },
     'WorkDay': {
         'supervisor': '__all__',
-        'admin': '__all__',
+        'admin': ['list', 'retrieve', 'create', 'update'],
         'worker': ['list', 'retrieve'],
     },
     'WorkerAttendance': {
         'supervisor': '__all__',
-        'admin': '__all__',
+        'admin': ['list', 'retrieve', 'create', 'update'],
         'worker': ['list', 'retrieve'],
         'teacher': ['list', 'retrieve'],                    # учитель видит посещаемость
     },
     'PositionLevel': {
-        'supervisor': '__all__',
-        'admin': '__all__',
+        'supervisor': ['list', 'retrieve', 'create', 'update'],
+        'admin': ['list', 'retrieve', 'create'],
         'worker': ['list', 'retrieve'],
     },
     'Department': {
         'supervisor': '__all__',
-        'admin': '__all__',
+        'admin': ['list', 'retrieve', 'create', 'update'],
         'worker': ['retrieve'],                             # staff только просмотр
     },
     'WorkerSalaryPayed': {
@@ -129,7 +130,7 @@ ROLE_PERMISSIONS = {
     },
     'WorkerSalaryWaitedPay': {
         'supervisor': '__all__',
-        'admin': '__all__',
+        'admin': ['list', 'retrieve', 'create', 'update'],
         'worker': ['retrieve'],
     },
     'Staff': {
@@ -149,43 +150,53 @@ ROLE_PERMISSIONS = {
 
 
 class RoleBasedPermission(BasePermission):
-    """Универсальный permission-класс по матрице ROLE_PERMISSIONS"""
-
     def has_permission(self, request, view):
         role = getattr(request.user, 'role', None)
         view_name = view.__class__.__name__.replace('ViewSet', '')
         action = view.action
 
+        # Супервайзер может делать всё, остальные не могут удалять
         if role == 'supervisor':
             return True
 
+        # Все остальные не могут удалять данные
+        if action == 'destroy':
+            return False
+
+        # Проверка на разрешённые действия для других ролей
         perms = ROLE_PERMISSIONS.get(view_name, {})
         allowed = perms.get(role)
         if not allowed:
             return False
+
         if allowed == '__all__':
             return True
-        if action in SAFE_METHODS and all(a in allowed for a in ['list', 'retrieve']):
-            return True
+
+        if action in SAFE_METHODS:
+            if any(a in allowed for a in [action]):
+                return True
+
         return action in allowed
 
     def has_object_permission(self, request, view, obj):
         role = getattr(request.user, 'role', None)
         view_name = view.__class__.__name__.replace('ViewSet', '')
 
-        # Специфичные проверки по объектам
+        # Проверка на доступ к объектам
         if view_name == 'StudentHomework' and role == 'student':
-            return obj.student.user == request.user
+            return obj.student.user == request.user  # Студент может изменять только свои задания
         if view_name == 'GroupHomework' and role == 'student':
-            return obj.group.students.filter(id=request.user.id).exists()
+            return obj.group.students.filter(id=request.user.id).exists()  # Студент может только свои домашки
         if view_name == 'GroupHomework' and role == 'teacher':
-            return obj.group.teacher.user == request.user
+            return obj.group.teacher.user == request.user  # Учитель может редактировать домашку своей группы
         if view_name == 'Lesson' and role == 'student':
-            return obj.students.filter(id=request.user.id).exists()
+            return obj.students.filter(id=request.user.id).exists()  # Студент может изменять только свои занятия
         if view_name in ['WorkerSalaryPayed', 'WorkerSalaryWaitedPay'] and role == 'worker':
             return True
         if view_name == 'Staff' and role == 'worker':
-            return obj.user == request.user  # staff меняет только свои данные
+            return obj.user == request.user  # staff может редактировать только свои данные
+        if view_name == 'Student' and role == 'student':  # Студент не может редактировать чужие данные
+            return obj.user == request.user
         return True
 
 # В ViewSet-ах указываем:

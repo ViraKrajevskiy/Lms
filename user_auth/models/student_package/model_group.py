@@ -15,4 +15,4 @@ class Group(BaseModel):
     descriptions = models.CharField(max_length=500, blank=True, null=True)
 
     def __str__(self):
-        return f"{self.title}, {self.course}"
+        return f"{self.title}, {self.course}, — {self.students.count()} студентов"

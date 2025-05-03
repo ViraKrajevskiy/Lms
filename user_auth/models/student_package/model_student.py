@@ -1,5 +1,7 @@
 from user_auth.models.base_user_model.user import *
 from user_auth.models.student_package.model_courses import *
+from user_auth.models.student_package.model_group import Group
+
 
 # класс студента
 class Student(BaseModel):
@@ -13,7 +15,7 @@ class Student(BaseModel):
     firstname = models.CharField(max_length=30)
     lastname = models.CharField(max_length=30)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    group = models.ManyToManyField('Group', blank=True, related_name='students_in_group')
+    group = models.ForeignKey(Group, on_delete=models.CASCADE, related_name='students')
     courses = models.ManyToManyField('Course', blank=True, related_name='students_in_course')
     is_line = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
