@@ -31,3 +31,4 @@ admin.site.register([
                      Room ,
 
                     ])
+# подключение

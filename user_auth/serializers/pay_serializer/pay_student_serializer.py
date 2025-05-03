@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
 from user_auth.models.pay_model_salary.pay_model_for_student import StudentPay
-
+# оплата работнику и валидация
 
 class PayStudentSerializer(serializers.ModelSerializer):
     class Meta:
