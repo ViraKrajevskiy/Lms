@@ -29,8 +29,8 @@ class StudentHomeworkSerializer(serializers.ModelSerializer):
         read_only_fields = ['is_checked', 'submitted_at']  # Эти поля не должны редактироваться студентом
 
     def validate(self, data):
-        # Проверка дедлайна: если срок сдачи истёк, нельзя отправить/редактировать
-        if data['group_homework'].deadline < timezone.now():
+        user = self.context['request'].user
+        if user.role == 'student' and data['group_homework'].deadline < timezone.now():
             raise serializers.ValidationError("Срок сдачи задания истек")
         return data
 

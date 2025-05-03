@@ -17,6 +17,7 @@ class StudentViewSet(viewsets.ModelViewSet):
     serializer_class = StudentSerializer  # Указываем, какой сериализатор использовать
     permission_classes = [IsAuthenticated, RoleBasedPermission]  # Разрешаем доступ только авторизованным пользователям с нужными правами
     pagination_class = StandardResultsSetPagination
+
     # Кастомное действие для получения активных студентов
     @action(detail=False, methods=['get'], url_path='active')
     def active_students(self, request):

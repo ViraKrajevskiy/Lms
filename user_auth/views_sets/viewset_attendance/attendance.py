@@ -15,13 +15,14 @@ class AttendanceViewSet(viewsets.ModelViewSet):  # Создаем ViewSet для
     pagination_class = StandardResultsSetPagination
 
 
-class MyAttendanceView(generics.ListAPIView):
-    serializer_class = MyAttendanceSerializer
-    permission_classes = [permissions.IsAuthenticated]
+class MyAttendanceView(generics.ListAPIView):  # Представление только для чтения (список), показывающее посещаемость
+    serializer_class = MyAttendanceSerializer  # Используем специальный сериализатор, который возвращает только нужные данные (например, без лишней информации)
+    permission_classes = [permissions.IsAuthenticated]  # Доступ разрешён только авторизованным пользователям
 
-    def get_queryset(self):
-        user = self.request.user
-        if not hasattr(user, 'student'):
+    def get_queryset(self):  # Метод, определяющий, какие данные показывать пользователю
+        user = self.request.user  # Получаем текущего авторизованного пользователя
+        if not hasattr(user, 'student'):  # Если у пользователя нет связи с моделью Student, возвращаем пустой список
             return Attendance.objects.none()
-        group = user.student.group
-        return Attendance.objects.filter(group=group)
+        group = user.student.group  # Получаем группу, к которой относится студент
+        return Attendance.objects.filter(group=group)  # Возвращаем посещаемость только для этой группы
+

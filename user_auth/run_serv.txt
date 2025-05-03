@@ -1,0 +1,2 @@
+ cd /var/www1/Lms
+ source venv/bin/activate
