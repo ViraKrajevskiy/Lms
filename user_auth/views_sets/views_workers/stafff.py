@@ -17,7 +17,7 @@ class StaffViewsSet(viewsets.ModelViewSet):
     queryset = Staff.objects.all()  # Получаем всех сотрудников из базы данных
     serializer_class = StaffSerializer  # Указываем сериализатор для сотрудников
     permission_classes = [IsAuthenticated, RoleBasedPermission]  # Только авторизованные пользователи с нужной ролью могут использовать этот ViewSet
-
+    pagination_class = StandardResultsSetPagination
     # Кастомное действие для получения посещаемости сотрудника
     @action(detail=False, methods=['get'], url_path='my-attendance')
     def my_attendance(self, request):
@@ -56,10 +56,11 @@ class TeacherViewSet(viewsets.ModelViewSet):
     queryset = Teacher.objects.all()  # Получаем всех преподавателей из базы данных
     serializer_class = TeacherSerializer  # Указываем сериализатор для преподавателей
     permission_classes = [IsAuthenticated, RoleBasedPermission]  # Разрешения для авторизованных пользователей с нужной ролью
-
+    pagination_class = StandardResultsSetPagination
 
 # ViewSet для работы с наставниками (Mentor)
 class MentorViewSet(viewsets.ModelViewSet):
     queryset = Mentor.objects.all()  # Получаем всех наставников из базы данных
     serializer_class = MentorSerializer  # Указываем сериализатор для наставников
     permission_classes = [IsAuthenticated, RoleBasedPermission]  # Разрешения для авторизованных пользователей с нужной ролью
+    pagination_class = StandardResultsSetPagination

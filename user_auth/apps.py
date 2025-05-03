@@ -6,4 +6,3 @@ class UserAuthConfig(AppConfig):
 
     def ready(self):
         import user_auth.models.Hw_model.signals  # <-- вот тут регистрируется сигнал
-# для группы

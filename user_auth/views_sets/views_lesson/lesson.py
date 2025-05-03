@@ -1,3 +1,4 @@
+from user_auth.pagination import StandardResultsSetPagination
 from user_auth.permissions.main_model_permission.Main_model import RoleBasedPermission
 from user_auth.serializers.course_serializer.course_and_other import RoomSerializer
 from user_auth.serializers.special_lesson_serializer.lesson_serializer import LessonSerializer, GroupHomeworkSerializer, \
@@ -14,7 +15,7 @@ class StudentAddHwViewSet(viewsets.ModelViewSet):
     queryset = StudentAddHw.objects.all()  # Все объекты StudentAddHw
     serializer_class = StudentAddHwSerializer
     permission_classes = [IsAuthenticated, RoleBasedPermission]  # Только авторизованные пользователи с нужной ролью
-
+    pagination_class = StandardResultsSetPagination
     # Переопределяем perform_create для добавления файлов
     def perform_create(self, serializer):
         serializer.save()
@@ -33,6 +34,7 @@ class LessonViewsSet(viewsets.ModelViewSet):
     queryset = Lesson.objects.all()  # Все уроки
     serializer_class = LessonSerializer
     permission_classes = [IsAuthenticated, RoleBasedPermission]  # Доступ ограничен
+    pagination_class = StandardResultsSetPagination
 
 # ViewSet для работы с комнатами (для уроков)
 # Стандартный доступ для всех авторизованных пользователей
@@ -40,6 +42,7 @@ class RoomViewSet(viewsets.ModelViewSet):
     queryset = Room.objects.all()  # Все комнаты
     serializer_class = RoomSerializer
     permission_classes = [IsAuthenticated, RoleBasedPermission]  # Доступ ограничен
+    pagination_class = StandardResultsSetPagination
 
 # ViewSet для работы с групповыми домашними заданиями
 # Студенты видят только свои задания
@@ -47,6 +50,7 @@ class GroupHomeworkViewSet(viewsets.ModelViewSet):
     queryset = GroupHomework.objects.all()  # Все групповые домашки
     serializer_class = GroupHomeworkSerializer
     permission_classes = [IsAuthenticated, RoleBasedPermission]  # Доступ для авторизованных пользователей
+    pagination_class = StandardResultsSetPagination
 
     def perform_create(self, serializer):
         # Создание группового домашнего задания
@@ -66,6 +70,7 @@ class StudentHomeworkViewSet(viewsets.ModelViewSet):
     queryset = StudentHomework.objects.all()  # Все задания студентов
     serializer_class = StudentHomeworkSerializer
     permission_classes = [IsAuthenticated, RoleBasedPermission]  # Доступ для авторизованных пользователей
+    pagination_class = StandardResultsSetPagination
 
     def perform_create(self, serializer):
         # Сохраняем новое задание

@@ -172,9 +172,8 @@ class RoleBasedPermission(BasePermission):
         if allowed == '__all__':
             return True
 
-        if action in SAFE_METHODS:
-            if any(a in allowed for a in [action]):
-                return True
+        if action in allowed:
+            return True
 
         return action in allowed
 

@@ -1,5 +1,8 @@
 from user_auth.models import BaseModel
 from django.db import models
+from dateutil.relativedelta import relativedelta
+from math import ceil
+from dateutil.relativedelta import relativedelta
 
 # дни учебы
 class StudyDay(models.Model):
@@ -19,14 +22,20 @@ class StudyDay(models.Model):
         return dict(self.Course_Days).get(self.code, self.title)
 
 # продолжительность курса
+
 class CourseDuration(BaseModel):
-    total_duration = models.IntegerField()
     course_start_time = models.DateField()
     course_end_time = models.DateField()
-    work_days = models.ManyToManyField(StudyDay, related_name='course_durations')
+    work_days = models.ManyToManyField('StudyDay', related_name='course_durations')
 
     def __str__(self):
-        return f"{self.total_duration} недель с {self.course_start_time} по {self.course_end_time}"
+        delta = relativedelta(self.course_end_time, self.course_start_time)
+        months = delta.years * 12 + delta.months
+        if delta.days > 0:
+            months += 1  # частичный месяц тоже считаем
+        return f"({months} мес.) с {self.course_start_time} по {self.course_end_time}"
+
+
 
 # левел курса начинающий или уже продвинутый
 class CourseLevel(BaseModel):

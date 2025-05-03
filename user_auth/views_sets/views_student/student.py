@@ -1,3 +1,4 @@
+from drf_yasg.utils import swagger_auto_schema
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
 
@@ -15,7 +16,7 @@ class StudentViewSet(viewsets.ModelViewSet):
     queryset = Student.objects.all()  # Получаем все объекты студентов из базы данных
     serializer_class = StudentSerializer  # Указываем, какой сериализатор использовать
     permission_classes = [IsAuthenticated, RoleBasedPermission]  # Разрешаем доступ только авторизованным пользователям с нужными правами
-
+    pagination_class = StandardResultsSetPagination
     # Кастомное действие для получения активных студентов
     @action(detail=False, methods=['get'], url_path='active')
     def active_students(self, request):
@@ -37,9 +38,28 @@ class StudentViewSet(viewsets.ModelViewSet):
         serializer = self.get_serializer(students, many=True)
         return Response(serializer.data)
 
+    def get_queryset(self):
+        user = self.request.user
 
+        if user.is_superuser or user.is_admin():
+            return Student.objects.all()
+        elif user.is_supervisor():
+            return Student.objects.filter(group__mentor__staff__user=user)
+        elif user.is_teacher():
+            return Student.objects.filter(group__teacher__staff__user=user)
+        elif user.is_student():
+            return Student.objects.filter(user=user)
+        return Student.objects.none()
+
+    @swagger_auto_schema(
+        operation_summary="Список студентов",
+        operation_description="Учителя видят студентов из своих групп. Менторы — своих. Студент — только себя. Админы — всех."
+    )
+    def list(self, request, *args, **kwargs):
+        return super().list(request, *args, **kwargs)
 # ViewSet для работы с моделью Parents
 class ParentViewSet(viewsets.ModelViewSet):
     queryset = Parents.objects.all()  # Получаем все объекты родителей из базы данных
     serializer_class = ParentsSerializer  # Указываем сериализатор для родителей
     permission_classes = [IsAuthenticated, RoleBasedPermission]  # Разрешаем доступ только авторизованным пользователям с нужными правами
+    pagination_class = StandardResultsSetPagination

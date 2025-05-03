@@ -17,4 +17,3 @@ def create_student_homework(sender, instance, created, **kwargs):
 
             # Логирование для отладки (необязательно, но полезно для отладки)
             print(f"Создано домашнее задание для студента {student} по группе {instance.group}")
-

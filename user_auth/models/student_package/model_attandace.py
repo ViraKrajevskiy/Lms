@@ -16,10 +16,7 @@ class Attendance(models.Model):
         on_delete=models.CASCADE,
         verbose_name='Группа'
     )
-    date = models.DateField(
-        default=timezone.now,
-        verbose_name='Дата занятия'
-    )
+    date = models.DateField(auto_now_add=True)
     students_status = JSONField(
         verbose_name='Статусы студентов',
         default=dict,

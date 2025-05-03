@@ -66,7 +66,7 @@ class WorkerSalaryPayed(BaseModel):
     def __str__(self):
         return f"Оплачено: {self.total_amount_payed} в {self.datePayDay}"
 
-# Ожидаеться олата денег
+# Ожидаеться оплата денег
 class WorkerSalaryWaitedPay(BaseModel):
     worker = models.ForeignKey('Staff', on_delete=models.CASCADE, related_name='waiting_salaries', null=True, blank=True)
     total_amount = models.IntegerField()
@@ -89,8 +89,8 @@ class Staff(BaseModel):
     lastname = models.CharField(max_length=30)
     live_place_address = models.TextField(max_length=100)
     user = models.OneToOneField('User', on_delete=models.CASCADE)
-    department = models.ForeignKey(Department, on_delete=models.CASCADE, related_name='workers')
-    salary_pay = models.OneToOneField(WorkerSalaryPayed, on_delete=models.CASCADE)
+    department = models.ForeignKey(Department, on_delete=models.CASCADE, null=True, blank=True, related_name='workers')
+    salary_pay = models.OneToOneField(WorkerSalaryPayed,null=True, blank=True, on_delete=models.CASCADE)
     position = models.ForeignKey(PositionLevel, on_delete=models.SET_NULL, null=True)
     work_days = models.ManyToManyField(WorkDay, blank=True, related_name='staff_members')
     salary_balance = models.DecimalField(max_digits=12, decimal_places=2, default=0)
