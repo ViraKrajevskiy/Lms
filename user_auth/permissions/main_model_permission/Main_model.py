@@ -148,7 +148,7 @@ ROLE_PERMISSIONS = {
     },
 }
 
-# пермишионны
+# пермишионны обновлены и проблемы устранены
 class RoleBasedPermission(BasePermission):
     def has_permission(self, request, view):
         role = getattr(request.user, 'role', None)
