@@ -1,3 +1,38 @@
  cd /var/www1/Lms
  source venv/bin/activate
  sudo systemctl restart gunicorn
++998000000000
+
++998000000010
+
+
++998900368140
+
+
+
++998900368051
+
+
+{
+  "phone_number": "+998589070566",
+  "password": "3003"
+}
+
+
+
+{
+      "id": 2,
+      "phone_number": "+998900368051",
+      "email": "guidevirgate@gmail.com",
+      "role": "student",
+      "is_active": true
+    },
+
+
+    {
+      "id": 8,
+      "phone_number": "+998900368059",
+      "email": null,
+      "role": "student",
+      "is_active": true
+    },

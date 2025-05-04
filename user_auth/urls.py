@@ -2,8 +2,8 @@ from django.urls import path,include
 from rest_framework.routers import DefaultRouter
 
 from user_auth.serializers.login_and_registration_serializer.logins_serializer import *
-#
-# from user_auth.view.little_api import *
+
+from user_auth.view.little_api import *
 
 from user_auth.views_sets.views_login.login import *
 from user_auth.views_sets.views_login.logout import *
