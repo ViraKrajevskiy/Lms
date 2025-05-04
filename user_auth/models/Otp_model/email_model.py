@@ -12,4 +12,4 @@ class OTPCode(models.Model):
         return timezone.now() > self.created_at + timezone.timedelta(minutes=10)
 
     def __str__(self):
-        return f"{self.user.phone_number} | {self.code}"
+        return f"{self.user.phone_number} , {self.code}"

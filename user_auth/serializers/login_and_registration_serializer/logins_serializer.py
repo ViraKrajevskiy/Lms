@@ -43,8 +43,8 @@ def get_tokens_for_user(user):
     refresh = RefreshToken.for_user(user)  # Генерация refresh токена для пользователя
 
     # Установка времени жизни refresh и access токенов (по 10 минут)
-    refresh.set_exp(from_time=datetime.now(), lifetime=timedelta(minutes=10))
-    refresh.access_token.set_exp(from_time=datetime.now(), lifetime=timedelta(minutes=10))
+    refresh.set_exp(from_time=datetime.now(), lifetime=timedelta(minutes=20))
+    refresh.access_token.set_exp(from_time=datetime.now(), lifetime=timedelta(minutes=20))
 
     # Возвращаем оба токена в виде строки
     return {
