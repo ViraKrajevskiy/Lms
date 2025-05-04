@@ -29,9 +29,9 @@ class RequestOTPView(APIView):
 
         # Для отладки: возвращаем код вместе с номером
         return Response({
-            "detail": "OTP отправлен",
+            "detail": code,
             "phone_number": phone_number,
-            "otp_code": code  # Удалить в продакшене!
+            # Удалить в продакшене!
         }, status=200)
 
 
@@ -71,7 +71,7 @@ class ConfirmOTPAndChangePasswordView(APIView):
             return Response({"detail": "Срок действия OTP истёк"}, status=400)
 
         # Меняем пароль пользователя
-        user.password = make_password(new_password)
+        user.set_password(new_password)
         user.save()
 
         # Помечаем OTP как использованный

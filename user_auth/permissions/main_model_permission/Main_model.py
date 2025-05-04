@@ -148,34 +148,6 @@ ROLE_PERMISSIONS = {
     },
 }
 
-# пермишионны обновлены и проблемы устранены
-# class RoleBasedPermission(BasePermission):
-#     def has_permission(self, request, view):
-#         role = getattr(request.user, 'role', None)
-#         view_name = view.__class__.__name__.replace('ViewSet', '')
-#         action = view.action
-#
-#         # Супервайзер может делать всё, остальные не могут удалять
-#         if role == 'supervisor':
-#             return True
-#
-#         # Все остальные не могут удалять данные
-#         if action == 'destroy':
-#             return False
-#
-#         # Проверка на разрешённые действия для других ролей
-#         perms = ROLE_PERMISSIONS.get(view_name, {})
-#         allowed = perms.get(role)
-#         if not allowed:
-#             return False
-#
-#         if allowed == '__all__':
-#             return True
-#
-#         if action in allowed:
-#             return True
-#
-#         return action in allowed
 class RoleBasedPermission(BasePermission):
     def has_permission(self, request, view):
         role = getattr(request.user, 'role', None)
