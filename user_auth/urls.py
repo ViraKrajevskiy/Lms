@@ -22,7 +22,7 @@ from user_auth.views_sets.viewset_attendance.attendance import *
 
 
 router = DefaultRouter()
-# path('rooms/total/', total_room_count, name='total-room-count'),
+
 router.register(r'student_hw_add',StudentAddHwViewSet)
 router.register(r'attendance' ,AttendanceViewSet)
 router.register(r'users', UserViewSet)
@@ -53,7 +53,7 @@ router.register(r'room',RoomViewSet)
 urlpatterns = [
     path('auth/request-otp/', RequestOTPView.as_view(), name='request_otp'),
     path('auth/change-password/', ConfirmOTPAndChangePasswordView.as_view(), name='change_password'),
-
+    path('rooms/total/', total_room_count, name='total-room-count'),
     path('login/', LoginApi.as_view(), name='login'),
     path('logout/', LogoutApi.as_view(), name='logout'),
 ]
