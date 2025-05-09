@@ -4,7 +4,7 @@ from user_auth.models import BaseModel
 from django.db import models
 
 from user_auth.models.student_package.model_attandace import *
-
+#+
 # комната на которой проходит урок
 class Room(BaseModel):
     rom_name = CharField(max_length=90,default='Standard_room')
@@ -14,6 +14,7 @@ class Room(BaseModel):
         return  f"{self.rom_name}, {self.rom_number}"
 
 
+#+
 # класс урок
 class Lesson(BaseModel):
     teacher = models.ForeignKey('Teacher', on_delete=models.SET_NULL, null=True, blank=True)

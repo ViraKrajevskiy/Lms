@@ -2,7 +2,7 @@ from django.db import models
 from django.db.models import JSONField
 from django.utils import timezone
 from user_auth.models.student_package.model_group import Group
-
+#+
 # прищел или не прищел ученик
 class Attendance(models.Model):
     STATUS_CHOICES = [

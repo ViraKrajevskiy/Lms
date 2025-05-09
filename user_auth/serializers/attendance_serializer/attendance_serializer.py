@@ -8,9 +8,11 @@ class AttendanceSerializer(serializers.ModelSerializer):
         read_only_fields = ['group', 'date']
 
     def validate(self, data):
-        if self.context['request'].user.role not in ['teacher', 'worker']:
+        request = self.context.get('request')
+        if not request or request.user.role not in ['teacher', 'worker']:
             raise serializers.ValidationError("Только преподаватели и сотрудники могут изменять посещаемость")
         return data
+
 
 class BulkAttendanceUpdateSerializer(serializers.Serializer):
     updates = serializers.DictField()

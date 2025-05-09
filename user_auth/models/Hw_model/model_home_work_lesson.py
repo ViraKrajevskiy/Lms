@@ -19,7 +19,7 @@ def validate_file_size(file):
 
 # Домашнее задание для группы
 
-
+#+
 class GroupHomework(BaseModel):
     name = models.CharField(max_length=100,default="group")
     group = models.ForeignKey(Group, on_delete=models.CASCADE)
@@ -31,7 +31,7 @@ class GroupHomework(BaseModel):
         return f"{self.name} Группа: {self.group.title}"
 
     # Этот метод будет вызываться после создания домашнего задания для группы
-
+#+
 # Домашняя работа студента
 class StudentHomework(BaseModel):
     student = models.ForeignKey('Student', on_delete=models.CASCADE, related_name='student_homeworks')
@@ -51,6 +51,8 @@ class StudentHomework(BaseModel):
     def __str__(self):
         return f"{self.student.surname} - {self.group_homework.name}"
 
+
+#+
 # Дополнительные файлы к домашней работе
 class StudentAddHw(BaseModel):
     homework = models.ForeignKey('StudentHomework',on_delete=models.CASCADE,related_name='additional_files')

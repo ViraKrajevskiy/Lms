@@ -3,7 +3,7 @@ from django.db import models
 from dateutil.relativedelta import relativedelta
 from math import ceil
 from dateutil.relativedelta import relativedelta
-
+#+
 # дни учебы
 class StudyDay(models.Model):
     Course_Days = [
@@ -21,6 +21,7 @@ class StudyDay(models.Model):
     def __str__(self):
         return dict(self.Course_Days).get(self.code, self.title)
 
+#+
 # продолжительность курса
 class CourseDuration(BaseModel):
     course_start_time = models.DateField()
@@ -40,7 +41,7 @@ class CourseDuration(BaseModel):
     def __str__(self):
         return f" недель ({self.total_duration} мес.) с {self.course_start_time} по {self.course_end_time}"
 
-
+#+
 
 # левел курса начинающий или уже продвинутый
 class CourseLevel(BaseModel):
@@ -54,6 +55,7 @@ class CourseLevel(BaseModel):
     def __str__(self):
         return f"{self.course_level}"
 
+#+
 # курс
 class Course(BaseModel):
     course_cost_per_week = models.IntegerField()

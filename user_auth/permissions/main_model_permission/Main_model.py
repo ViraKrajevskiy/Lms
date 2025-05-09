@@ -34,7 +34,7 @@ ROLE_PERMISSIONS = {
         'teacher': ['list', 'retrieve', 'create', 'update'],  # учитель может CRUD кроме удаления
         'student': ['list', 'retrieve'],                      # студент может просматривать и оценивать один раз
     },
-    'PayStudent': {
+    'StudentPay': {
         'supervisor': '__all__',
         'admin': ['list', 'retrieve', 'create', 'update'],
         'worker': ['list', 'retrieve'],                       # staff просматривать
@@ -84,7 +84,7 @@ ROLE_PERMISSIONS = {
         'admin': ['list', 'retrieve', 'create', 'update'],
         'worker': ['list', 'retrieve', 'create', 'update'],
     },
-    'Parent': {
+    'Parents': {
         'supervisor': '__all__',
         'admin': ['list', 'retrieve', 'create', 'update'],
         'worker': ['list', 'retrieve', 'create', 'update'],

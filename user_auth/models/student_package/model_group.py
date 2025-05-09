@@ -1,7 +1,7 @@
 from django.db import models
 import datetime
 from user_auth.models import BaseModel
-
+#+
 # класс группа
 class Group(BaseModel):
     title = models.CharField(max_length=50, unique=True)

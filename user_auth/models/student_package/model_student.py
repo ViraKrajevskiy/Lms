@@ -2,7 +2,7 @@ from user_auth.models.base_user_model.user import *
 from user_auth.models.student_package.model_courses import *
 from user_auth.models.student_package.model_group import Group
 
-
+#+
 # класс студента
 class Student(BaseModel):
     STATUS_CHOICES = [
@@ -27,6 +27,7 @@ class Student(BaseModel):
     def __str__(self):
         return f"{self.surname}, {self.firstname}, {self.lastname}"
 
+#+
 # родители учителя
 class Parents(models.Model):
     student = models.OneToOneField(Student, on_delete=models.CASCADE)
